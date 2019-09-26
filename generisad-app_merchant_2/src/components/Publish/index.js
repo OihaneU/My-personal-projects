@@ -1,5 +1,5 @@
 
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import logic from '../../logic'
 import { withRouter } from 'react-router-dom'
 import Nav from "../Nav"

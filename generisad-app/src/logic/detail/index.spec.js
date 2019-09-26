@@ -11,10 +11,10 @@ const REACT_APP_JWT_SECRET_TEST = process.env.REACT_APP_JWT_SECRET_TEST
 const { random } = Math
 
 describe.only('logic - detail ad', () => {
-    let name, surname, email, password, userId, favorites
+    let name, surname, email, password, userId
     let domain, name_domain, merchant
     let image, title, description, price, date, location, adId
-    let token
+
     
     beforeAll(() => database.connect(REACT_APP_DB_URL_TEST))
     

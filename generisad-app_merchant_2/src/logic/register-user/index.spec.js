@@ -1,15 +1,15 @@
 import registerUser from '.'
-const { random } = Math
 import { database, models } from 'generisad-data'
-const { User, Advertisement, Merchant } = models
+
+const { random } = Math
+const { User, Merchant } = models
 const REACT_APP_DB_URL_TEST = process.env.REACT_APP_DB_URL_TEST
 
 describe('logic - register user', () => {
     beforeAll(() => database.connect(REACT_APP_DB_URL_TEST))
     
-    let name, surname, email, password, id
+    let name, surname, email, password
     let domain, name_domain, merchant
-    let token
     
     beforeEach( async ()=>{
         
@@ -34,4 +34,6 @@ describe('logic - register user', () => {
 
         expect(response).toBeUndefined()
     })
+    afterAll(() => database.disconnect())
+
 })

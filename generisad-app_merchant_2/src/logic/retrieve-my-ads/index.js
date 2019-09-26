@@ -1,3 +1,11 @@
+/**
+ * retrieve user emails depending on domain
+ * 
+ * 
+ * @throws {Error} - if  response is different to 200.
+ * 
+ */
+
 import logic from '../../logic'
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
@@ -5,23 +13,22 @@ const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
 export default function () {
 
-    const token = logic.userCredentials
-    let domain = window.location.hostname;
+        let domain = window.location.hostname;
 
+        const token = logic.userCredentials
+        return (async () => { 
+                const response = await fetch(`${REACT_APP_API_URL}/users/message/${domain}`, {
+                        method: 'get',
+                        headers: {authorization: `bearer ${token}`}
+                })
 
-    return (async () => {
-        const response = await fetch(`${REACT_APP_API_URL}/product/owner/${domain}`, {
-            method: 'get',
-            headers: { authorization: `bearer ${token}` }
-        })
+                if (response.status !== 200) {
+                        const { error } = await response.json()
+        
+                        throw Error(error)
+                }
+                const res = await response.json()
 
-        if (response.status !== 200) {
-            const { error } = await response.json()
-
-            throw Error(error)
-        }
-        const res = await response.json()
-
-        return res.ad
-    })()
+                return res.mail
+        })()        
 }

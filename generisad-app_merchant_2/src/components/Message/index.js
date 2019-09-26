@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import logic from '../../logic'
-import { withRouter, Link, Route, Redirect } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Nav from "../Nav"
 import Footer from "../Footer"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -95,9 +95,7 @@ function Detail({ history, id }) {
         </>}
     </section>
 
-    <Footer/>
-
-        
+    <Footer/>      
 </>
 }
 

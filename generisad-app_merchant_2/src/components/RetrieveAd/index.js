@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import logic from '../../logic'
-import { withRouter, Link, Route, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import Nav from "../Nav"
 import Footer from "../Footer"

@@ -1,8 +1,29 @@
+/**
+ * Send an email depending domain, adId and user.
+ * 
+ * 
+ * @param {String} id 
+ * @param {String} title 
+ * @param {String} body
+ * 
+ * @throws {TypeError} - if any of the parameters are not a string.
+ * @throws {Error} - if  response is different to 201.
+ * 
+ * @returns {Promise} mailId object.
+ */
+
+
 import logic from '..'
+
+const {validate}= require("generisad-utils")
+
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
 export default function (id, title, body) {
-    // validate fields
+    validate.string(id, 'id')
+    validate.string(title, 'title')
+    validate.string(body, 'body')
+    
     const token = logic.userCredentials
     let domain = window.location.hostname;
     

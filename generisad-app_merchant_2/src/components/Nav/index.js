@@ -2,10 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import logic from '../../logic'
 
-import { withRouter, Route, Redirect } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faUpload, faHeart, faAd, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
+import { withRouter } from 'react-router-dom'
 
 function Nav ({ history}) {
     const [read, setRead] = useState()
@@ -26,10 +23,6 @@ function Nav ({ history}) {
         setRead(0)
     }
 
-
-
-    // const { credentials} = useContext(Context)
-    
     const token = logic.userCredentials
 
     useEffect(() => {
@@ -85,31 +78,9 @@ function Nav ({ history}) {
                   </ul>
 
                 }
-              
         </div>         
         <img className="logo" onClick={handleHome} src={require('../../img/logo.png')} alt="img_00.jpg"></img>
     </nav>
-
-    {/* <nav>
-    <ul class="nav__menu">
-                        <a class= "menu-nav__list" href={`/#/ad`}><li><FontAwesomeIcon className="message__icon" icon={faSearch} size="50px" color="gray"/></li></a>
-                        <a class= "menu-nav__list"  href={`/#/publish`}><li><FontAwesomeIcon className="message__icon" icon={faUpload} size="50px" color="gray"/></li></a>
-                        <hr/>
-                        <a class= "menu-nav__list" href={`/#/favorites`}><li><FontAwesomeIcon className="message__icon" icon={faHeart} size="50px" color="gray"/></li></a>
-                        <a class= "menu-nav__list"  href={`/#/myads`}><li><FontAwesomeIcon className="message__icon" icon={faAd} size="50px" color="gray"/></li></a>
-                        <hr/>
-                        {!read ?
-                            <a class= "menu-nav__list" href={`/#/message`}><li><FontAwesomeIcon className="message__icon" icon={faEnvelope} size="50px" color="gray"/></li></a>
-                            :
-                            <a class= "menu-nav__list" href={`/#/message`} onClick={() => handleRead()}><li>Mensajes (Nuevos {read})</li></a>
-                        }
-                        
-                        
-                        <a class= "menu-nav__list"  href={`/#/`} onClick={() => handleLogout()}><li><FontAwesomeIcon className="message__icon" icon={fa} size="50px" color="gray"/></li></a> 
-                  </ul>
-
-    </nav> */}
-
 
     </>
 }

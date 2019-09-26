@@ -11,10 +11,10 @@ const REACT_APP_JWT_SECRET_TEST = process.env.REACT_APP_JWT_SECRET_TEST
 const { random } = Math
 
 describe.only('logic - detail ad', () => {
-    let name, surname, email, password, userId, favorites
+    let name, surname, email, password, userId
     let domain, name_domain, merchant
     let image, title, description, price, date, location, adId
-    let token
+    
     
     beforeAll(() => database.connect(REACT_APP_DB_URL_TEST))
     
@@ -64,46 +64,6 @@ describe.only('logic - detail ad', () => {
                 expect(ad.location).toBe(location)
                 expect(ad.merchant_owner.toString()).toBe(merchant)
     })
-
-    // it('should fail if the user ad does not exist', async () => {
-    //     try {
-    //         await logic.removeAd( "5d712e297ea98990acdc78bd")
-    //         throw Error('should not arrive here')
-    //     } catch (error) {
-    //         expect(error).toBeDefined()
-    //         expect(error.message).toBe(`advertisement with id 5d712e297ea98990acdc78bd does not exist`)
-
-    //     }
-    // })
-
-
-    // it("should fail on unexisting user" , async () => {
-
-    //     try{
-    //         await deleteAd( "5d712e2v7ea98990acdc78bd", adId )
-    //         const ad = await Advertisement.findById(adId)
-    //         expect(ad).toBeUndefined()
-    //     }catch(error){
-    //         expect(error).tobeDefined()
-    //         expect(error.message).toBe(`user with id 5d712e2v7ea98990acdc78bd is not owner of advertisement with id ${adId}`)
-    //     }
-
-    // })
-    // it('should fail on empty user id', () => 
-    //     expect(() => deleteAd("", adId)).to.throw('user id is empty or blank')
-    // )
-
-    // it('should fail on wrong user id type', () => 
-    //     expect(() => deleteAd( 123, adId)).to.throw('user id with value 123 is not a string')
-    // )
-
-    // it('should fail on empty ad id', () => 
-    //     expect(() => deleteAd(userId, "" )).to.throw('id is empty or blank')
-    // )
-
-    // it('should fail on wrong ad id type', () => 
-    //     expect(() => deleteAd( userId, 123 )).to.throw('id with value 123 is not a string')
-    // )
 
 
     afterAll(() => database.disconnect())

@@ -4,7 +4,7 @@ import Footer from "../Footer"
 import logic from '../../logic'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPaperPlane, faArrowLeft, faCar } from '@fortawesome/free-solid-svg-icons'
+import {  faPaperPlane, faArrowLeft, faCar } from '@fortawesome/free-solid-svg-icons'
 
 import { withRouter, Link } from 'react-router-dom'
 
@@ -22,19 +22,14 @@ function Detail({ history, id }) {
             try {
                 
                 const favs = await logic.retrieveFavorites(domain)
-
                 const fav = favs.favorites.find( ({ _id }) => _id === id )
                 await logic.favorite(id)
 
-                if(fav){
-                    setFavorites(null)
-                }else{
-                    setFavorites(id)
-                }
-
+                if(fav) setFavorites(null)
+                else setFavorites(id)
+                
             } catch (error) {
                 console.log(error.message)
-
             }
         }
     }
@@ -48,11 +43,8 @@ function Detail({ history, id }) {
                 const favs = await logic.retrieveFavorites(domain)
                 const fav = favs.favorites.find( ({ _id }) => _id === id )
 
-                if(fav){
-                    setFavorites(fav._id)
-                }else{
-                    setFavorites(null)
-                }
+                if(fav) setFavorites(fav._id)
+                else setFavorites(null)
                 
             } catch (error) {
                 setError("No esta disponible este anuncio")
@@ -97,13 +89,10 @@ function Detail({ history, id }) {
                 <button className= "detail__button">
                     <Link className= "detail__button--decoration" to={`/send/${id}`} ><FontAwesomeIcon icon={faPaperPlane} size="50px" color="gray"/> Contacta con el vendedor</Link>
                 </button>
-
         </>}
     </section>
 
-    <Footer/>
-
-        
+    <Footer/>       
 </>
 }
 

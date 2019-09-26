@@ -1,7 +1,13 @@
+/**
+ * To know if email is new.
+ * 
+ * @throws {Error} - if  response is different to 200.
+ * 
+ */
+
 import logic from '../../logic'
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
-
 
 export default function () {
 
@@ -21,10 +27,7 @@ export default function () {
                 const res = await response.json()
 
                 return res.mail
-                
-        
+                        
         })()
-
-
         
 }

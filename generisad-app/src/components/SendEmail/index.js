@@ -51,6 +51,7 @@ function SendEmail ({history}) {
 
     </section>
     <Footer/>
+    
    
 </>
 }

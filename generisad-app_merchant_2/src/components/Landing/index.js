@@ -3,10 +3,6 @@ import React from 'react'
 import Nav from "../Nav"
 import Footer from "../Footer"
 
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAtom } from '@fortawesome/free-solid-svg-icons'
-
 export default function() {
     return <>
 
@@ -34,7 +30,6 @@ export default function() {
             </main>
 
         <Footer/>
-
         
     </>
 }

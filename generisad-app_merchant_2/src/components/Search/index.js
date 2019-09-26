@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Nav from "../Nav"
 import logic from '../../logic'
-import Footer from "../Footer"
 import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -10,14 +9,12 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 function Search ({history}) {
     const [search, setSearch] = useState()
-    let domain = window.location.hostname;
-
 
     useEffect(() => {
             (async () => {
                 try{
 
-                    let domain = window.location.hostname;
+                    let domain = window.location.hostname
 
                     //TODO this is not efficient, find a better way
                     let shuffle = (array) => array.sort(() => Math.random() - 0.5);
@@ -73,11 +70,6 @@ function Search ({history}) {
                         </li>): <p className="ad__none">No hay resultados</p>}
                 </ul>
         </section>
-        
- 
-    
-
-    {/* <Footer/> */}
 
     </>
 }

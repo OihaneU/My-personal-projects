@@ -7,7 +7,6 @@ import Feedback from '../Feedback'
 
 function Login({ history }) {
     
-  const { } = useContext(Context)
   const  [error, setError]  = useState()
   
   function handleSubmit(event) {

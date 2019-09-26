@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
-import Context from '../Context'
-//import logo from './logo.svg';
+import React, { useState, useEffect } from 'react'
 import './index.sass'
 import Register from '../Register'
 import Login from '../Login'
-import logic from "../../logic"
 import Search from '../Search'
 import Landing from '../Landing'
 import Results from '../Results'
@@ -19,20 +16,17 @@ import RetrieveAd from "../RetrieveAd"
 
 
 
-import { withRouter, Route, Redirect } from 'react-router-dom'
+import { withRouter, Route } from 'react-router-dom'
 
 
 
 
 function App({history}) {
 
-  const { } = useContext(Context)
-  const [query, setQuery] = useState()
-  const [response, setresponse] = useState()
-  const [message, setMessage] = useState(  )
 
+  const [query, setQuery] = useState()
   
-  // const { } = useContext(Context)
+
   
     function handleSearch(query) {
         setQuery(query)
@@ -51,8 +45,6 @@ function App({history}) {
 
   return (
     <div className="App">
-    <Context.Provider value={{}}>
-      
         <Route exact path="/" render={() => <Landing/>} />
         <Route path="/ad" render={() => <Search onSearch={handleSearch} />} /> 
         <Route path="/search" render={() => <Results query={query} />} />
@@ -65,17 +57,6 @@ function App({history}) {
         <Route path='/send/:id' render={history => <SendEmail id={history.match.params.id} /> } /> 
         <Route path='/response/:id' render={() => <Response /> } /> 
         <Route path='/myads' render={() => <RetrieveAd /> } /> 
-
-
-        {/* <Route path="/ad/search" render={() => <Results query={query} />} /> */}
-      {/* <Route path="/ad/search/:id" render={props => <Detail id={props.match.params.id} />} /> */}
-      
-      {/* <Route path="/search" render={() => <Results query={query} />} />
-      <Route path="/ducks/:id" render={props => <Detail id={props.match.params.id} />} /> */}
-    </Context.Provider>
-    
-
-     
     </div>
   );
 }

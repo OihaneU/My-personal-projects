@@ -39,7 +39,6 @@ describe.only('logic - delete ad', () => {
         const _merchant = await Merchant.create({ name: name_domain, domain })
         merchant = _merchant.id
      
-
         await User.deleteMany()
         const user = await User.create({ name, surname, email, password, merchant_owner: merchant })
         userId = user.id
@@ -70,36 +69,16 @@ describe.only('logic - delete ad', () => {
         }
     })
 
-
     it("should fail on unexisting user" , async () => {
-
         try{
             await logic.removeAd( "5d712e2v7ea98990acdc78bd", adId )
             const ad = await Advertisement.findById(adId)
             expect(ad).toBeUndefined()
         }catch(error){
             expect(error).toBeDefined()
-            //expect(error.message).toBe(`user with id 5d712e2v7ea98990acdc78bd is not owner of advertisement with id ${adId}`)
         }
-
     })
-    // it('should fail on empty user id', () => 
-    //     expect(() => removeAd("", adId)).to.throw('user id is empty or blank')
-    // )
-
-    // it('should fail on wrong user id type', () => 
-    //     expect(() => removeAd( 123, adId)).to.throw('user id with value 123 is not a string')
-    // )
-
-    // it('should fail on empty ad id', () => 
-    //     expect(() => removeAd(userId, "" )).to.throw('id is empty or blank')
-    // )
-
-    // it('should fail on wrong ad id type', () => 
-    //     expect(() => removeAd( userId, 123 )).to.throw('id with value 123 is not a string')
-    // )
-
-
+    
     afterAll(() => database.disconnect())
 })
 

@@ -15,7 +15,6 @@ describe.only('logic -toggle ad', () => {
     let name, surname, email, password, userId
     let domain, name_domain, merchant
     let image, title, description, price, date, location, adId
-    let token
     
     beforeAll(() => database.connect(REACT_APP_DB_URL_TEST))
     
@@ -55,7 +54,6 @@ describe.only('logic -toggle ad', () => {
 
     it('should succeed on correct data', async () => {
         const result = await logic.favorite(adId)
-        debugger
             expect(result).toBeUndefined()
     
     })

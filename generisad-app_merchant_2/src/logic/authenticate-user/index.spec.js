@@ -4,7 +4,7 @@ import { database, models } from 'generisad-data'
 const jwt = require('jsonwebtoken') 
 import bcrypt from 'bcryptjs'
 
-const { User, Advertisement, Merchant } = models
+const { User, Merchant } = models
 
 const REACT_APP_DB_URL_TEST = process.env.REACT_APP_DB_URL_TEST
 const REACT_APP_JWT_SECRET_TEST = process.env.REACT_APP_JWT_SECRET_TEST
