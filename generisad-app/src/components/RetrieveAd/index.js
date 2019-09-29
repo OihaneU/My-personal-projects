@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import logic from '../../logic'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link, Route, Redirect } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
