@@ -31,7 +31,8 @@ function RetrieveAd ({ history }) {
     useEffect(() => {
         (async () => {
             try{
-                const _ads = await logic.retrieveMyAds()
+                let domain = window.location.hostname
+                const _ads = await logic.retrieveMyAds(domain)
                 
                 setMyAds(_ads)
             }catch(error){

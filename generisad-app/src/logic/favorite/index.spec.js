@@ -55,7 +55,58 @@ describe.only('logic -toggle ad', () => {
     it('should succeed on correct data', async () => {
         const result = await logic.favorite(adId)
             expect(result).toBeUndefined()
-    
+    })
+
+    it('should succeed on correct delete', async () => {
+        const user = await User.findById(userId)
+
+        user.favorites.push(adId)
+        await user.save()
+        
+        const result = await logic.favorite(adId)
+        expect(result).toBeUndefined()
+    })
+
+    it('should fail on wrong adId', async() => {
+        const wrongAdId = "5d73952803f75b35e0b8d85e"
+        try{
+            await logic.favorite(wrongAdId)
+            throw new Error('should not reach this point')
+        }catch(error){
+            expect(error).toBeTruthy()
+            expect(error.message).toBe(`advertisement with id ${wrongAdId} does not exist`)
+        }
+    })
+
+    it('should fail on empty adId', async () => {
+        
+        try{
+            await logic.favorite('')
+            throw new Error('should not reach this point')
+        }catch(error){
+            expect(error).toBeTruthy()
+            expect(error.message).toBe(`id is empty or blank`)
+        }
+    })
+    it('should fail on undefined adId', async () => {
+        
+        try{
+            await logic.favorite(undefined)
+            throw new Error('should not reach this point')
+        }catch(error){
+            expect(error).toBeTruthy()
+            expect(error.message).toBe(`id with value undefined is not a string`)
+        }
+    })
+    it('should fail on wrong adId data type', async () => {
+        
+        try{
+            await logic.favorite(123)
+            throw new Error('should not reach this point')
+        }catch(error){
+            expect(error).toBeTruthy()
+            expect(error.message).toBe(`id with value 123 is not a string`)
+        }
     })
 
 

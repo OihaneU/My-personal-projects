@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom'
 function Nav ({ history}) {
     const [read, setRead] = useState()
 
+    let domain = window.location.hostname
+
     function handleLogout ()  {
         logic.logoutUser()
         history.push("/")
@@ -19,7 +21,7 @@ function Nav ({ history}) {
     }
 
     function handleRead ()  {
-        logic.unreadMessage()
+        logic.unreadMessage(domain)
         history.push("/message")
         setRead(0)
     }

@@ -37,8 +37,8 @@ export default function (id, title, body, domain) {
         })
         
         if (response.status === 201) {
-            const { adId } = await response.json()
-            return adId
+            const { mailId } = await response.json()
+            return mailId
 
         } else {
             const { error } = await response.json()

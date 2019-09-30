@@ -65,51 +65,56 @@ describe.only('logic - response ad', () => {
 
     })
 
-    it('should succeed on correct data', async () => { 
-        const message = await logic.response(mailId, titleMail2, body1, domain)
-        expect(message).toBeUndefined()
+    it('should succeed on correct data', async () => { debugger
+        const message = await logic.unreadMessage(domain)
+        expect(message[0].read).toBe(false)
+        expect(message[0].advertisement).toBe(adId)
+        expect(message[0].body).toBe(body)
+        expect(message[0].title).toBe(titleMail1)
+        expect(message[0].receiver).toBe(userId)
+        expect(message[0].sender).toBe(userId)
 
     })
 
-    it('should fail on wrong mailId', async() => {
-        const wrongMailId = "5d73952803f75b35e0b8d85e"
+    it('should fail on wrong domain', async() => {
+        const wrong = "5d73952803f75b35e0b8d85e"
         try{
-            await logic.response(wrongMailId, titleMail2, body1, domain )
+            await logic.retrieveMyAds(wrong )
             throw new Error('should not reach this point')
         }catch(error){
             expect(error).toBeTruthy()
-            expect(error.message).toBe(`mailId with id 5d73952803f75b35e0b8d85e not found`)
+            expect(error.message).toBe(`domain 5d73952803f75b35e0b8d85e not found`)
         }
     })
 
-    it('should fail on empty mailId', async () => {
+    it('should fail on empty domain', async () => {
         
         try{
-            await logic.response("", titleMail2, body1, domain)
+            await logic.retrieveMyAds("")
             throw new Error('should not reach this point')
         }catch(error){
             expect(error).toBeTruthy()
-            expect(error.message).toBe(`id is empty or blank`)
+            expect(error.message).toBe(`domain is empty or blank`)
         }
     })
-    it('should fail on undefined mailId', async () => {
+    it('should fail on undefined domain', async () => {
         
         try{
-            await logic.response(undefined, titleMail2, body1, domain)
+            await logic.retrieveMyAds(undefined)
             throw new Error('should not reach this point')
         }catch(error){
             expect(error).toBeTruthy()
-            expect(error.message).toBe(`id with value undefined is not a string`)
+            expect(error.message).toBe(`domain with value undefined is not a string`)
         }
     })
-    it('should fail on wrong mailId data type', async () => {
+    it('should fail on wrong domain data type', async () => {
         
         try{
-            await logic.response(123, titleMail2, body1, domain)
+            await logic.retrieveMyAds(123)
             throw new Error('should not reach this point')
         }catch(error){
             expect(error).toBeTruthy()
-            expect(error.message).toBe(`id with value 123 is not a string`)
+            expect(error.message).toBe(`domain with value 123 is not a string`)
         }
     })
 

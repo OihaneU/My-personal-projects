@@ -20,7 +20,6 @@ export default function (id){
 const token = logic.userCredentials
 
     return(async () => {
-            debugger
         const response = await fetch(`${REACT_APP_API_URL}/product/${id}`, {
             method: 'delete',
             headers: { 'content-type': 'application/json', authorization: `bearer ${token}`}, 

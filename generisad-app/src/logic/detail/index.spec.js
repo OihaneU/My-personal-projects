@@ -54,15 +54,13 @@ describe.only('logic - detail ad', () => {
 
     it('should succeed on correct data', async () => {
         const ad = await logic.detail(adId)
-
-        console.log(ad)
-                expect(ad).toBeDefined()
-                expect(ad.image).toBe(image)
-                expect(ad.title).toBe(title)
-                expect(ad.description).toBe(description)
-                expect(ad.price).toBe(price)
-                expect(ad.location).toBe(location)
-                expect(ad.merchant_owner.toString()).toBe(merchant)
+            expect(ad).toBeDefined()
+            expect(ad.image).toBe(image)
+            expect(ad.title).toBe(title)
+            expect(ad.description).toBe(description)
+            expect(ad.price).toBe(price)
+            expect(ad.location).toBe(location)
+            expect(ad.merchant_owner.toString()).toBe(merchant)
     })
 
 

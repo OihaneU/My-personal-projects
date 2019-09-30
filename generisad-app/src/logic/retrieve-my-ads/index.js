@@ -7,14 +7,15 @@
  */
 import logic from '../../logic'
 
+const {validate}= require("generisad-utils")
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
 
-export default function () {
+export default function (domain) {
+
+    validate.string(domain, 'domain')
 
     const token = logic.userCredentials
-    let domain = window.location.hostname;
-
 
     return (async () => {
         const response = await fetch(`${REACT_APP_API_URL}/product/owner/${domain}`, {

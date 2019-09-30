@@ -16,7 +16,8 @@ function Message ({ history }) {
         useEffect(() => {
             (async () => {
                 try{
-                    const _mails = await logic.retrieveMessage()
+                    let domain = window.location.hostname
+                    const _mails = await logic.retrieveMessage(domain)
                     setMails(_mails)
 
                 }catch(error){

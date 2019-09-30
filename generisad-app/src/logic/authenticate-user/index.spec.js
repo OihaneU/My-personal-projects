@@ -18,7 +18,7 @@ describe('logic-authenticate user', ()=>{
     
     let name, surname, email, password, id
     let domain, name_domain, merchant
-    let token
+    let token 
     
     beforeEach( async ()=>{
         

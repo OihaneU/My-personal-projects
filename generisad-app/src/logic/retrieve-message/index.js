@@ -8,12 +8,12 @@
 
 import logic from '../../logic'
 
+const {validate}= require("generisad-utils")
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
+export default function (domain) {
 
-export default function () {
-
-        let domain = window.location.hostname;
+        validate.string(domain, 'domain')
 
         const token = logic.userCredentials
         return (async () => { 
