@@ -44,12 +44,10 @@ describe('logic - search', () => {
         await Merchant.deleteMany()
         const _merchant = await Merchant.create({ name: name_domain, domain })
         merchant = _merchant.id
-        console.log( merchant + "--1")
 
         await User.deleteMany()
         const user = await User.create({ name, surname, email, password,  merchant_owner: merchant  })
         userId = user.id
-        console.log( userId + "--2")
 
         await Advertisement.deleteMany()
         
@@ -57,8 +55,6 @@ describe('logic - search', () => {
         adId1 = ad1.id
         const ad2 = await Advertisement.create({ image: image2, title: title2, description: description2, price: price2, location: location2, 'owner': userId,  merchant_owner: merchant  })
         adId2 = ad2.id
-        console.log( adId1 + "--3")
-        console.log( adId2 + "--4")
 
     })
     it('should succeed on correct data', async () => {

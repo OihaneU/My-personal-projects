@@ -15,7 +15,7 @@ function Results ({ history }) {
         async function search() {
             try{
 
-                let domain = window.location.hostname;
+                let domain = window.location.hostname
                 const { query } = queryString.parse(history.location.search)
                 
     
