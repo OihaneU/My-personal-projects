@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import logic from '../../logic'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link, Route, Redirect } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
@@ -19,14 +19,10 @@ function RetrieveAd ({ history }) {
             try {
                 await logic.removeAd(i)
                 const _ads = await logic.retrieveMyAds()
-                
                 setMyAds(_ads)
 
-
-                console.log("delete add")
             } catch (error) {
                 console.log(error.message)
-
             }
         }
     }
@@ -35,7 +31,9 @@ function RetrieveAd ({ history }) {
     useEffect(() => {
         (async () => {
             try{
-                const _ads = await logic.retrieveMyAds()
+                let domain = window.location.hostname
+                const _ads = await logic.retrieveMyAds(domain)
+                
                 setMyAds(_ads)
             }catch(error){
                 console.log(error.message)
@@ -52,7 +50,7 @@ function RetrieveAd ({ history }) {
 
             <h2 className="myads__ini">Mis publicaciones</h2>
                 <ul className="myads__ul" >
-                    {/* {ads && ads.length && ads.map(({_id, image, title, desciption, location}) => <li key={_id}><a href={`/#/ads/${_id}`}>{image, title, desciption, location}</a></li>)} */}
+                   
                     {myAds && myAds.length && myAds.map(item => <li className="myads__li" key={item._id}>
                             <img className="myads__image" src={item.image}></img>
                             <div className="myads__text">
@@ -63,7 +61,7 @@ function RetrieveAd ({ history }) {
                                 <button className="myads__button" onClick={() => handleDelete(item._id)}><FontAwesomeIcon icon={faTrashAlt} color="gray"/></button>
                             </div>
                                             
-                    </li>)||<li className="myads__none">No tienes ningun anuncio todavía</li>}
+                    </li>)||<li className="myads__none">No tienes ninguno anuncio todavía</li>}
                 </ul>
         </section>
         

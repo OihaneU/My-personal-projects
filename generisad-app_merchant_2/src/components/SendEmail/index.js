@@ -24,7 +24,8 @@ function SendEmail ({history}) {
     async function handleMessage(title, body) {
         
         try {
-            await logic.sendEmail(_id, title, body)
+            let domain = window.location.hostname
+            await logic.sendEmail(_id, title, body, domain)
             history.push('/message')
         } catch(message) {
             const translatedMessage = logic.translateMessage(message.message )
@@ -50,8 +51,8 @@ function SendEmail ({history}) {
         </form>
 
     </section>
-    
     <Footer/>
+    
    
 </>
 }

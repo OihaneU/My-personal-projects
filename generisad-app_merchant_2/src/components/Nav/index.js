@@ -4,8 +4,11 @@ import logic from '../../logic'
 
 import { withRouter } from 'react-router-dom'
 
+
 function Nav ({ history}) {
     const [read, setRead] = useState()
+
+    let domain = window.location.hostname
 
     function handleLogout ()  {
         logic.logoutUser()
@@ -18,23 +21,21 @@ function Nav ({ history}) {
     }
 
     function handleRead ()  {
-        logic.unreadMessage()
+        logic.unreadMessage(domain)
         history.push("/message")
         setRead(0)
     }
 
+    
     const token = logic.userCredentials
 
     useEffect(() => {
         (async () => {
             try{
                 const _mails = await logic.unreadMessage()
-                if(_mails){
-                    setRead(_mails.length)
-                }else{
-                    setRead(0)
-                }
                 
+                _mails ? setRead(_mails.length) : setRead(0)
+            
             }catch(error){
                 console.log(error.message)
             }
@@ -78,9 +79,11 @@ function Nav ({ history}) {
                   </ul>
 
                 }
+              
         </div>         
-        <img className="logo" onClick={handleHome} src={require('../../img/logo.png')} alt="img_00.jpg"></img>
+        <img className="logo" onClick={handleHome} src={require('../../img/logo.jpg')} alt="img_00.jpg"></img>
     </nav>
+
 
     </>
 }

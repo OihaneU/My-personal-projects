@@ -19,13 +19,13 @@ const {validate}= require("generisad-utils")
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
-export default function (id, title, body) {
+export default function (id, title, body, domain) {
     validate.string(id, 'id')
     validate.string(title, 'title')
     validate.string(body, 'body')
+    validate.string(domain, 'domain')
     
     const token = logic.userCredentials
-    let domain = window.location.hostname;
     
     return (async () => { 
         const response = await fetch(`${REACT_APP_API_URL}/users/ads/${id}/message`, {
