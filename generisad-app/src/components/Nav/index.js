@@ -32,7 +32,7 @@ function Nav ({ history}) {
     useEffect(() => {
         (async () => {
             try{
-                const _mails = await logic.unreadMessage()
+                const _mails = await logic.unreadMessage(domain)
                 
                 _mails ? setRead(_mails.length) : setRead(0)
             
