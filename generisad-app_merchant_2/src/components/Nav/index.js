@@ -32,7 +32,7 @@ function Nav ({ history}) {
     useEffect(() => {
         (async () => {
             try{
-                const _mails = await logic.unreadMessage()
+                const _mails = await logic.unreadMessage(domain)
                 
                 _mails ? setRead(_mails.length) : setRead(0)
             
@@ -81,11 +81,11 @@ function Nav ({ history}) {
                 }
               
         </div>         
-        <img className="logo" onClick={handleHome} src={require('../../img/logo.jpg')} alt="img_00.jpg"></img>
+        <img className="logo" onClick={handleHome} src={require('../../img/logo.png')} alt="img_00.jpg"></img>
     </nav>
 
 
     </>
 }
 
-export default withRouter(Nav);
+export default withRouter(Nav)

@@ -65,7 +65,7 @@ describe.only('logic - response ad', () => {
 
     })
 
-    it('should succeed on correct data', async () => { debugger
+    it('should succeed on correct data', async () => { 
         const message = await logic.unreadMessage(domain)
         expect(message[0].read).toBe(false)
         expect(message[0].advertisement).toBe(adId)

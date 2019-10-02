@@ -11,6 +11,8 @@ import Footer from "../Footer"
 function RetrieveAd ({ history }) {
     const [myAds, setMyAds] = useState()
 
+    
+
 
     async function handleDelete(i) {
         if (!logic.isUserLoggedIn()) {
@@ -18,7 +20,8 @@ function RetrieveAd ({ history }) {
         } else {
             try {
                 await logic.removeAd(i)
-                const _ads = await logic.retrieveMyAds()
+                let domain = window.location.hostname
+                const _ads = await logic.retrieveMyAds(domain)
                 setMyAds(_ads)
 
             } catch (error) {
